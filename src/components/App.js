@@ -1,17 +1,22 @@
 import Search from "./Search";
-// import Flight from "./Flight";
+import Navbar from "./Navbar";
+import Home from "./Home"
+import Flight from "./Flight";
 // import ReactDOM from "react-dom/client";
-// import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 
 function App() {
   return (
-    <div className="App">
-      <Search />
-      {/* <Routes>
-        {/* <Route path="/flight" element={<Flight />} /> */}
-        {/* <Route path="/search" element={<Search />} />
-      </Routes> */}
+    <>
+    <Navbar />
+    <div className="container">
+      <Routes>
+        <Route path="/flight" element={<Flight />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
+    </>
   );
 }
 

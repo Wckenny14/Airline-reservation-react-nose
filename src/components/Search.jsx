@@ -8,10 +8,8 @@ class Search extends Component {
         super();
         this.state = {
             flights: [],
-            airplanes: []
         };
         // this.saveFlight = this.saveFlight.bind(this);
-        // this.saveAirplane = this.saveAirplane.bind(this);
     }
     // React life cycle method:
     componentDidMount() {
@@ -23,15 +21,7 @@ class Search extends Component {
                 // console.log(fetchFlights)
             });
         };
-        const fetchAirplanes = () => {
-            axios(SERVER_URL + 'airplanes.json').then((response) => {
-                this.setState({airplanes: response.data}); // set the data from the API as our state
-                console.log(response) // tells us where to retrieve data
-                setTimeout(fetchAirplanes, 5000); // recursion for polling. Setting timer to call itself again in 7 seconds
-            });
-        }
         fetchFlights();
-        fetchAirplanes();
     }
 
     // saveFlight(flightInfo) {
@@ -50,7 +40,6 @@ class Search extends Component {
         return (
             <div>
                 <FlightForm flights={ this.state.flights }/>
-                <AirplaneForm airplanes={ this.state.airplanes }/>
             </div>
         );
     }
@@ -63,12 +52,12 @@ const FlightForm = (props) => {
             <table style={{width: "100%"}}>
                 <thead>
                     <tr>
-                        <th>Flight No.</th>
                         <th>Origin</th>
                         <th>Destination</th>
                         <th>Date</th>
-                        {/* <th>Airplane</th> */}
+                        <th>Flight No.</th>
                         {/* <th>Available Seats</th> */}
+                        
                         <th colSpan="6"></th>
                     </tr>
                 </thead>
@@ -76,11 +65,10 @@ const FlightForm = (props) => {
                     { props.flights.map((f) => {
                         return (
                             <tr key={ f.id }>
-                                <td>{ f.flight_number }</td>
                                 <td>{ f.origin }</td>
                                 <td>{ f.destination }</td>
                                 <td>{ f.date }</td>
-                                {/* <td>{ f.airplane_id.plane_name }</td> */}
+                                <button>{f.flight_number}</button>
                             </tr>
                         );
                     })};
@@ -89,12 +77,6 @@ const FlightForm = (props) => {
         </div>
     )
 }
-const AirplaneForm = (props) => {
-    return (
-        <div>
-            {/* <h2>{ props.airplanes.length } Airplanes</h2> */}
-        </div>
-    )
-}
+
 
 export default Search;

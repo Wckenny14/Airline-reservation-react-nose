@@ -1,3 +1,8 @@
+export default function Home() {
+    return <h1>Login page coming soon</h1>
+}
+
+
 // import React, { PureComponent as Component } from 'react';
 // import axios from 'axios';
 // import _ from 'lodash';
