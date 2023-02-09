@@ -5,7 +5,8 @@ export default function Navbar() {
             <Link to="/" className="site-title">Burning Airlines</Link>
             <ul>
                 <CustomLink to="/Search">Book Flights</CustomLink>
-                <CustomLink to="/Flight">Log in</CustomLink>
+                <CustomLink to="/Flight">Create flight</CustomLink>
+                <CustomLink to="/Airplane">Create Airplane</CustomLink>
             </ul>
         </nav>
     );

@@ -2,7 +2,7 @@ import Search from "./Search";
 import Navbar from "./Navbar";
 import Home from "./Home"
 import Flight from "./Flight";
-// import ReactDOM from "react-dom/client";
+import Airplane from "./Airplane";
 import { Route, Routes } from "react-router-dom"
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/flight" element={<Flight />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/airplane" element={<Airplane />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </div>
