@@ -9,32 +9,17 @@ class Search extends Component {
         this.state = {
             flights: [],
         };
-        // this.saveFlight = this.saveFlight.bind(this);
     }
     // React life cycle method:
     componentDidMount() {
         const fetchFlights = () => {
             axios(SERVER_URL + 'flights.json').then((response) => {
                 this.setState({flights: response.data}); // set the data from the API as our state
-                // console.log(response) // tells us where to retrieve data
-                // setTimeout(fetchFlights, 5000); // recursion for polling. Setting timer to call itself again in 7 seconds
-                // console.log(fetchFlights)
+                setTimeout(fetchFlights, 5000); // recursion for polling. Setting timer to call itself again in 7 seconds
             });
         };
         fetchFlights();
     }
-
-    // saveFlight(flightInfo) {
-    //     axios.post(SERVER_URL, { flightInfo: flightInfo }).then((response) => {
-    //         this.setState({flights: [response.data, ...this.state.flights]});
-    //     });
-    // }
-
-    // saveAirplane(airplaneInfo) {
-    //     axios.post(SERVER_URL, { airplaneInfo: airplaneInfo }).then((response) => {
-    //         this.setState({airplanes: [response.data, ...this.state.flights]});
-    //     });
-    // }
 
     render() {
         return (
@@ -56,8 +41,6 @@ const FlightForm = (props) => {
                         <th>Destination</th>
                         <th>Date</th>
                         <th>Flight No.</th>
-                        {/* <th>Available Seats</th> */}
-                        
                         <th colSpan="6"></th>
                     </tr>
                 </thead>
@@ -77,6 +60,5 @@ const FlightForm = (props) => {
         </div>
     )
 }
-
 
 export default Search;

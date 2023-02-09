@@ -1,8 +1,3 @@
-// export default function Home() {
-//     return <h1>We are currently experiencing staff shortages due to covid. No further flights will be added until further notice</h1>
-// }
-
-
 import React, { Component, useState } from 'react';
 import axios from 'axios';
 
@@ -23,16 +18,13 @@ class Flights extends Component {
         const fetchFlights = () => {
             axios.get(FLIGHTS_URL).then((response) => {
                 this.setState({flights: response.data}); // set the data from the API as our state
-                // console.log(response)
-                // setTimeout(fetchFlights, 7000); // recursion for polling.
+                setTimeout(fetchFlights, 7000); // recursion for polling.
             });
         };
         fetchFlights(); 
     }
 
     saveFlight(origin, destination, date, flight_number) {
-        // save the secret to the server via AJAX
-        debugger
         axios.post(FLIGHTS_URL, { origin: origin, destination: destination, date: date, flight_number: flight_number }).then((response) => {
             console.log(response)
             this.setState({flights: [response.data, ...this.state.flights]});
@@ -88,14 +80,6 @@ const FlightForm = (props) => {
     const [destination, setDestination] = useState('');
     const [date, setDate] = useState('');
     const [flight_number, setFlight_Number] = useState('');
-
-    // const _handleInput = (e) => {
-    //     setOrigin(e.target.value)
-    //     setDestination(e.target.value)
-    //     setDate(e.target.value)
-    //     setFlight_Number(e.target.value)
-
-    // };
     
     const _handleSubmit = (e) => {
         e.preventDefault();
